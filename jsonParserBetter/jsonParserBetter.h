@@ -55,5 +55,21 @@ struct Json {
     // now we want something that inserts element to the map
     // i passed char* instead of string to be able to use temp values
     void insert(const char*,Json&&); 
+
+    /* This part of for the extraction from a std::string type*/
+    // a lot will be taken from the old implimentation
+    static std::string ReadFile(const std::string&);
+    // this will read a snippet of the Json file that has a primative 
+    // type (int or double)
+    static Json ParsePrimativeType(const std::string&,string_it,string_it);
+    // this will parse any subsection of the json file , 
+    // that means it will be called recursivly.
+    static Json ParseJsonHelper(const std::string&,string_it&);
+    // gets the pair value and key (value is JsonVlaue in case it is nested) 
+    static std::pair<std::string&,Json&> getTupleValues(const std::string&,string_it&);
+    // this is the main Json parser function
+    static Json ParseJson(std::string&);
+
+    /* Below well impliment the "std::string" generator from JSON (later...)*/
 };
 std::ostream& operator<<(std::ostream&,const Json&);

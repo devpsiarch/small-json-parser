@@ -23,7 +23,8 @@ public:
     static std::string readFile(const std::string&);
     // this will read a snippet of the Json file that has a primative type (int or double)
     static JsonValue ParsePrimativeType(const std::string&,string_it,string_it);
-    // this will parse any subsection of the json file , that means it will be called recursivly.
+    // this will parse any subsection of the json file , 
+    // that means it will be called recursivly.
     static JsonValue ParseJsonHelper(const std::string&,string_it&);
     // gets the pair value and key (value is JsonVlaue in case it is nested) 
     static std::pair<std::string,JsonValue> getTupleValues(const std::string&,string_it&);
