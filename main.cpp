@@ -18,8 +18,22 @@ int main() {
     std::cout << root << '\n';
     // for extracting from text : 
     // you can use the "ReadFile" to read JSON from a file given its path
-    std::string json_text = "{\n \"one\": 1,\n\"stringtest\": \"looking\",\n \"two\": {\n\"three\": 3, \n \"four\": { \n\"five\": 5 \n } \n }, \n \"six\": {\n\"seven\": 7\n } \n}";
+    std::string json_text = "{\n"
+            "\"books\":{\n"
+            "\"title\": \"the bay at hand\","
+            "\"author\": \"james miller\","
+            "\"isbn\": \"12345678910111213\","
+            "\"language\": \"EN\","
+            "\"year\": 1990,"
+            "\"genre\": \"fiction\","
+            "\"publisher\": \"yaho\","
+            "\"pages\": 600,"
+            "\"format\": \"100\","
+            "\"stock\": 100"
+            "},\n"
+            "}";
     Json root2 = Json::ParseJson(json_text);
     std::cout << root2 << '\n';
+    std::cout << root2["books"]["title"] << '\n';
     return 0;
 }

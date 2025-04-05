@@ -1,4 +1,19 @@
 #include "jsonParserBetter.h"
+
+int Json::getInt(void) const{
+    ASSERT_TYPE(this,JsonType::INT);
+    return i;
+}
+double Json::getDouble(void) const{
+    ASSERT_TYPE(this,JsonType::DOUBLE);
+    return d;
+}
+
+std::string Json::getString(void) const{
+    ASSERT_TYPE(this,JsonType::STRING);
+    // return a copy of the string
+    return (*t);
+}
 std::ostream& operator<<(std::ostream&out,const Json&other){
     if(other.type == JsonType::INT){
         out << other.i;

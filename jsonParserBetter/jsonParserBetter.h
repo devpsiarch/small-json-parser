@@ -12,6 +12,10 @@ typedef std::string::iterator string_it;
                           throw std::runtime_error("object not a map\n");    \
 
 #define PRINT_QUOTED(str,printer) printer << "\"" << str << "\""
+
+#define ASSERT_TYPE(thing,what) if(thing->type != what)                        \
+                                throw std::runtime_error("wrong type!\n");     \
+
 enum class JsonType { INT, DOUBLE, STRING, MAP };
 
 struct Json {
@@ -22,6 +26,13 @@ struct Json {
         std::string* t;
         JSONMAP* sub_json;
     };
+    /*Here i will define some getters to get values from Json element*/
+    // these get copies and wont give up or nor allow borrowing of memory
+    int getInt(void) const; 
+    double getDouble(void) const;
+    std::string getString(void) const; 
+    // i wont provide a mathode to get a copy of the map becasue of the 
+    // way the Json is designed ... use it explicitly as stated in the example
     // for pretty print
     friend std::ostream& operator<<(std::ostream&,const Json&);
     // default constructore , becomes a integer here
